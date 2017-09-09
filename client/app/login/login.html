@@ -1,0 +1,13 @@
+<h2>Login</h2>
+
+<div>This is the login view.</div>
+
+<form name="loginForm" ng-submit="vm.login()">
+
+	<label for="">Numero de Documento</label>
+	<input type="number" ng-model="vm.user.numDocumento">
+	<label for="">Password</label>
+	<input type="password" ng-model="vm.user.password">
+
+	<button type="submit">Iniciar</button>
+</form>

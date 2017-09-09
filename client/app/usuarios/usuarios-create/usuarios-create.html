@@ -1,0 +1,58 @@
+<div>This is the usuarios-create view.</div>
+
+<form name="userForm" ng-submit="userForm.$valid && vm.createUser()" novalidate>
+
+    <label for="">Tipo Documento</label>
+    <select name="" id="" ng-model="vm.usuario.tipoDocumento.id">
+		<option ng-value="{{item.id}}" ng-repeat="item in vm.tiposDocumentos">{{item.descripcion}}</option>
+	</select>
+    <div class="form-group">
+        <label for="">Documento</label>
+        <input type="text" class="form-control" name="numDocumento" required minlength="7" maxlength="10" ng-pattern="/^[0-9]{1,25}$/" ng-model="vm.usuario.numDocumento">
+        <div ng-messages="userForm.numDocumento.$error" ng-show="userForm.numDocumento.$dirty">
+            <div class="" ng-message="required">
+                <p>este campo es requerido</p>
+            </div>
+            <div ng-message="pattern">
+                solo se permite numeros
+            </div>
+            <div class="" ng-message="minlength">
+                el documento debe contener minimo 7 caracteres
+            </div>
+        </div>
+    </div>
+    <label for="">Apellidos</label>
+    <input type="text" ng-model="vm.usuario.apellidos">
+
+    <label for="">Nombres</label>
+    <input type="text" ng-model="vm.usuario.nombres">
+
+    <label for="">Email</label>
+    <input type="text" name="email" required ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" ng-model="vm.usuario.email">
+    <div ng-messages="userForm.email.$error" ng-show="userForm.email.$dirty">
+        <div ng-message="required">
+            este campo es requerido
+        </div>
+        <div ng-message="pattern">
+            mail invalido
+        </div>
+    </div>
+    <label for="">password</label>
+    <input type="password" ng-model="vm.usuario.password">
+
+    <label for="">Sexo</label>
+    <select ng-model="vm.usuario.sexo">
+	</select>
+
+    <select name="" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudades()">
+		<option ng-value="{{item.id}}" ng-repeat="item in vm.departamentos">{{item.nombre}}</option>
+	</select>
+
+    <label for="">Ciudad</label>
+    <select name="" id="" ng-model="vm.usuario.ciudad.id">
+		<option ng-value="{{item.id}}" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>
+	</select>
+
+    <button type="submit">Registrar</button>
+
+</form>
